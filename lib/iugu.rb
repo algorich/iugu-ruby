@@ -35,6 +35,7 @@ module Iugu
 
     def initialize(errors)
       @errors = errors
+      super(@errors)
     end
   end
 
