@@ -1,8 +1,6 @@
-#encoding: UTF-8
-
 require 'rest_client'
-require "base64"
-require "json"
+require 'base64'
+require 'json'
 
 module Iugu
   class APIRequest
@@ -39,7 +37,7 @@ module Iugu
 
     def self.handle_response(response)
       response_json = JSON.parse(response.body)
-      raise ObjectNotFound if response_json.is_a?(Hash) && response_json['errors'] == "Not Found"
+      raise ObjectNotFound if response_json.is_a?(Hash) && response_json['errors'] == 'Not Found'
       raise RequestWithErrors, response_json['errors'] if response_json.is_a?(Hash) && response_json['errors'] && response_json['errors'].length > 0
       response_json
     rescue JSON::ParserError
